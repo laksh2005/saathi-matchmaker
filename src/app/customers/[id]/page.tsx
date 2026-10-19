@@ -8,6 +8,7 @@ import { Avatar } from "@/components/ui";
 import { Biodata } from "@/components/Biodata";
 import { JourneyPanel } from "./JourneyPanel";
 import { NotesPanel } from "./NotesPanel";
+import { MatchesPanel } from "./MatchesPanel";
 
 export default async function CustomerPage({ params }: { params: { id: string } }) {
   const s = await getSession();
@@ -40,6 +41,7 @@ export default async function CustomerPage({ params }: { params: { id: string } 
           <Biodata p={c} />
           <NotesPanel clientId={c.id} />
         </div>
+        <MatchesPanel client={c} />
       </div>
     </AppShell>
   );
