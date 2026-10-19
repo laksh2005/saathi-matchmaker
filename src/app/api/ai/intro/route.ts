@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth.server";
 import { clientFor, poolProfile } from "@/lib/data.server";
 import { scorePair } from "@/lib/matching";
-import { templateIntro } from "@/lib/intro";
+import { writeIntro } from "@/lib/ai.server";
 
 export async function POST(req: Request) {
   const s = await getSession();
@@ -11,5 +11,5 @@ export async function POST(req: Request) {
   const client = clientFor(s.sub, String(clientId));
   const cand = poolProfile(String(candidateId));
   if (!client || !cand) return NextResponse.json({ error: "Unknown client or match" }, { status: 404 });
-  return NextResponse.json(templateIntro(client, scorePair(client, cand), s.name));
+  return NextResponse.json(await writeIntro(client, scorePair(client, cand), s.name));
 }
