@@ -60,7 +60,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Add `OPENAI_API_KEY` to `.env.local` to enable AI (optional), then:
+Add `GEMINI_API_KEY` (or `OPENAI_API_KEY`) to `.env.local` to enable AI (optional), then:
 
 ```bash
 npm run dev

@@ -11,8 +11,16 @@ import OpenAI from "openai";
 import { ageOf, type MatchResult, type Profile } from "./types";
 import { templateIntro, type IntroEmail } from "./intro";
 
-const MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
-const openai = process.env.OPENAI_API_KEY ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) : null;
+// Provider: Gemini through its OpenAI compatible endpoint when GEMINI_API_KEY
+// is set, otherwise OpenAI. Same SDK and prompts either way.
+const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/";
+const useGemini = !!process.env.GEMINI_API_KEY;
+const MODEL = process.env.AI_MODEL || (useGemini ? "gemini-2.5-flash" : "gpt-4o-mini");
+const openai = useGemini
+  ? new OpenAI({ apiKey: process.env.GEMINI_API_KEY, baseURL: GEMINI_BASE_URL })
+  : process.env.OPENAI_API_KEY
+    ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+    : null;
 
 export const aiEnabled = () => openai !== null;
 
