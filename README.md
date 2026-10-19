@@ -1,6 +1,6 @@
 # Saathi
 
-**Saathi** (Hindi for "companion") is a matchmaker dashboard and matching engine built for The Date Crew. Matchmakers sign in, see every client they manage and where each one is in their journey, read full biodata, record call notes, and get ranked, explained match suggestions they can send as a personal intro email.
+**Saathi** (Hindi for "companion") is a matchmaker dashboard and matching engine. Matchmakers sign in, see every client they manage and where each one is in their journey, read full biodata, record call notes, and get ranked, explained match suggestions they can send as a personal intro email.
 
 * Live demo: https://saathi-matchmaker.vercel.app
 * Repository: https://github.com/laksh2005/saathi-matchmaker
